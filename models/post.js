@@ -2,7 +2,7 @@
 //code borrowed from modules
 
 const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/connection');
+const sequelize = require('../config/config');
 // create our Post model
 class Post extends Model {
   static upvote(body, models) {
