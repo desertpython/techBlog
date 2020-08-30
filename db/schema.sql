@@ -1,0 +1,3 @@
+DROP DATABASE IF EXISTS product2;
+
+CREATE DATABASE product2;
