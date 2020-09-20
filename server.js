@@ -14,11 +14,10 @@ var exphbs  = require('express-handlebars');
 const dotenv = require('dotenv').config()
 const bcrypt = require('bcrypt');
 var session = require('express-session')
-// initalize sequelize with session store
-var SequelizeStore = require("connect-session-sequelize")(session.Store);
-var app = express();
-app.engine('handlebars', exphbs());
+const app = express();
+app.engine('handlebars', exphbs({defaultLayout:'main'}));
 app.set('view engine', 'handlebars');
+var SequelizeStore = require("connect-session-sequelize")(session.Store);
  
 // create database, ensure 'mySQL2' in your package.json
 var sequelize = new Sequelize(process.env.DB_HOST, process.env.DB_USER,process.env.DB_PASS, {
@@ -26,20 +25,16 @@ var sequelize = new Sequelize(process.env.DB_HOST, process.env.DB_USER,process.e
   host: "localhost",
   port: 3306,
 });
- 
-// configure express
-var app = express();
 
 
-// create the connection to database
 // const connection = mysql.createConnection({
 //     host: 'localhost',
 //     user: 'root',
 //     database: 'test'
 // });
 
-// connect().use(
-//     connect.session({
+// connection().use(
+//     connection.session({
 //       store: new SequelizeStore(options),
 //       secret: "CHANGEME",
 //     })
@@ -51,7 +46,7 @@ var app = express();
 
  
 app.get('/', function (req, res) {
-    res.render('home');
+    res.render('login');
 });
  
 
